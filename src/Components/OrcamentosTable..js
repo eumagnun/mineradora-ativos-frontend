@@ -1,7 +1,6 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Modal } from 'reactstrap'
+import { Container, Row, Col } from 'reactstrap'
 import { CSVLink } from "react-csv"
-import ModalForm from './Modals/Modal'
 import DataTable from './Tables/DataTableOrcamentos'
 
 class OrcamentosTable extends Component {

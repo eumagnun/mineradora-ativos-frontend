@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 
-class FormOrcamento extends React.Component {
+class FormManutencao extends React.Component {
   state = {
+    idAtivo:'',
     descAtivo: '',
     tipoAtivo: '',
     dtVencimentoOrcamento: '',
@@ -15,8 +16,8 @@ class FormOrcamento extends React.Component {
 
   submitFormAdd = e => {
     e.preventDefault()
-    fetch('http://localhost:8080/api/v1/orcamento/submeter', {
-      method: 'post',
+    fetch(`http://localhost:8080/api/v1/ativo/${this.state.idAtivo}/manutencao`, {
+      method: 'put',
       headers: {
         'Content-Type': 'application/json'
       },
@@ -53,11 +54,7 @@ class FormOrcamento extends React.Component {
 
   render() {
     return (
-
-
       <Form onSubmit={ this.submitFormAdd}>
-
-        <h1 style={{margin: "20px 0"}}>Novo Orçamento</h1>
         <FormGroup>
           <Label for="descAtivo">Descrição Ativo</Label>
           <Input type="text" name="descAtivo" id="descAtivo" onChange={this.onChange} value={this.state.descAtivo === null ? '' : this.state.descAtivo} />
@@ -80,4 +77,4 @@ class FormOrcamento extends React.Component {
   }
 }
 
-export default FormOrcamento
+export default FormManutencao
