@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import AddEditForm from './Components/Forms/FormAddEdit';
 import AtivosTable from './Components/AtivosTable';
 import OrcamentosTable from './Components/OrcamentosTable.';
+import FormOrcamento from './Components/Forms/FormOrcamento';
 
 class App extends Component {
   state = {
@@ -25,11 +26,20 @@ class App extends Component {
                 Pesquisar Orçamentos
               </Link>
             </li>
+
+            <li className="nav-item">
+              <Link to={"/submeterOrcamento"} className="nav-link">
+                Submeter Orçamento
+              </Link>
+            </li>
+
             <li className="nav-item">
               <Link to={"/ativos"} className="nav-link">
                 Pesquisar Ativos
               </Link>
             </li>
+
+            
           </div>
         </nav>
 
@@ -40,6 +50,8 @@ class App extends Component {
             <Route path="/orcamentos/:id" component={AddEditForm} />
             <Route exact path="/ativos" component={AtivosTable} />
             <Route path="/ativos/:id" component={AddEditForm} />
+            <Route path="/submeterOrcamento" component={FormOrcamento} />
+
           </Switch>
         </div>
       </div>
