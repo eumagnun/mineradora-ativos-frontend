@@ -5,6 +5,7 @@ import AddEditForm from './Components/Forms/FormAddEdit';
 import AtivosTable from './Components/AtivosTable';
 import OrcamentosTable from './Components/OrcamentosTable.';
 import FormOrcamento from './Components/Forms/FormOrcamento';
+import Home from './Components/Home';
 
 class App extends Component {
   state = {
@@ -45,7 +46,7 @@ class App extends Component {
 
         <div className="container mt-3">
           <Switch>
-            <Route exact path={["/", "/home"]} />
+            <Route exact path={["/", "/home"]} component={Home} />
             <Route exact path="/orcamentos" component={OrcamentosTable} />
             <Route path="/orcamentos/:id" component={AddEditForm} />
             <Route exact path="/ativos" component={AtivosTable} />

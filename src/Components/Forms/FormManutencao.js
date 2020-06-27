@@ -56,21 +56,18 @@ class FormManutencao extends React.Component {
     return (
       <Form onSubmit={ this.submitFormAdd}>
         <FormGroup>
-          <Label for="descAtivo">Descrição Ativo</Label>
-          <Input type="text" name="descAtivo" id="descAtivo" onChange={this.onChange} value={this.state.descAtivo === null ? '' : this.state.descAtivo} />
+          <Label for="dataPlanejadaManutencao">Data Planejada Manutenção</Label>
+          <Input type="text" name="dataPlanejadaManutencao" id="dataPlanejadaManutencao" onChange={this.onChange} value={this.state.descAtivo === null ? '' : this.state.descAtivo} />
         </FormGroup>
         <FormGroup>
-          <Label for="tipoAtivo">Tipo Ativo</Label>
-          <Input type="text" name="tipoAtivo" id="tipoAtivo" onChange={this.onChange} value={this.state.tipoAtivo === null ? '' : this.state.tipoAtivo}  placeholder="[ veiculo, movel, eletronico, imovel ]"/>
+          <Label for="dataRealizadaManutencao">Data Realizada Manutenção</Label>
+          <Input type="text" name="dataRealizadaManutencao" id="dataRealizadaManutencao" onChange={this.onChange} value={this.state.tipoAtivo === null ? '' : this.state.tipoAtivo}  placeholder="[ veiculo, movel, eletronico, imovel ]"/>
         </FormGroup>
         <FormGroup>
-          <Label for="dtVencimentoOrcamento">Data Vencimento Orçamento</Label>
-          <Input type="datetime" name="dtVencimentoOrcamento" id="dtVencimentoOrcamento" onChange={this.onChange} value={this.state.dtVencimentoOrcamento === null ? '' : this.state.dtVencimentoOrcamento}   placeholder="ex. 2019-02-03 10:08:02" />
+          <Label for="comentario">Comentarios</Label>
+          <Input type="text" name="comentario" id="comentario" onChange={this.onChange} value={this.state.dtVencimentoOrcamento === null ? '' : this.state.dtVencimentoOrcamento}   placeholder="ex. 2019-02-03 10:08:02" />
         </FormGroup>
-        <FormGroup>
-          <Label for="precoOrcamento">Preço Orçamento</Label>
-          <Input type="number" name="precoOrcamento" id="precoOrcamento" onChange={this.onChange} value={this.state.precoOrcamento === null ? '' : this.state.precoOrcamento}  />
-        </FormGroup>
+    
         <Button>Enviar</Button>
       </Form>
     );
