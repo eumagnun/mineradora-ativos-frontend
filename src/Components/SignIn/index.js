@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 
 import api from "../../services/api";
-import { login } from "../../services/auth";
+import { login, logout } from "../../services/auth";
 
 import { Form, Container } from "./styles";
 
@@ -28,7 +28,7 @@ class SignIn extends Component {
                     }
                 );
                 login(response.data.token);
-                this.props.history.push("/app");
+                this.props.history.push("/orcamentos");
             } catch (err) {
                 this.setState({
                     error:
@@ -53,8 +53,11 @@ class SignIn extends Component {
                         placeholder="Senha"
                         onChange={e => this.setState({ password: e.target.value })}
                     />
-                    <button type="submit">Entrar</button>
+                    <button type="submit">Entrar</button><br/>
+                    <button type="button" onClick={logout()}>Sair</button>
+
                 </Form>
+        
             </Container>
         );
     }

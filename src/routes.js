@@ -29,7 +29,8 @@ const Routes = () => (
         <a href="/" className="navbar-brand">
           Login
           </a>
-        <div className="navbar-nav mr-auto">
+          
+        <div className="navbar-nav mr-auto" >
           <li className="nav-item">
             <Link to={"/orcamentos"} className="nav-link">
               Pesquisar Orçamentos
@@ -47,6 +48,7 @@ const Routes = () => (
               Pesquisar Ativos
             </Link>
           </li>
+          
 
         </div>
       </nav>
@@ -54,13 +56,13 @@ const Routes = () => (
       <div className="container mt-3">
 
         <Switch>
-          <Route exact path="/orcamentos" component={OrcamentosTable} />
-          <Route path="/orcamentos/:id" component={AddEditForm} />
-          <Route exact path="/ativos" component={AtivosTable} />
-          <Route path="/ativos/:id" component={AddEditForm} />
-          <Route path="/submeterOrcamento" component={FormOrcamento} />
+          
+          <PrivateRoute exact path="/orcamentos" component={OrcamentosTable} />
+          <PrivateRoute path="/orcamentos/:id" component={AddEditForm} />
+          <PrivateRoute exact path="/ativos" component={AtivosTable} />
+          <PrivateRoute path="/ativos/:id" component={AddEditForm} />
+          <PrivateRoute path="/submeterOrcamento" component={FormOrcamento} />
           <Route exact path="/" component={SignIn} />
-          <PrivateRoute path="/app" component={() => <h1>App</h1>} />
           <Route path="*" component={() => <h1>Page not found</h1>} />
         </Switch>
 
