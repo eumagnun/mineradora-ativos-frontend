@@ -2,17 +2,19 @@ import React, { Component } from 'react'
 import { Container, Row, Col } from 'reactstrap'
 import { CSVLink } from "react-csv"
 import DataTable from './Tables/DataTableAtivos'
+import api from '../services/api'
 
 class AtivosTable extends Component {
   state = {
     items: []
   }
 
-  getItems(){
-    fetch('http://localhost:8080/api/v1/ativo')
-      .then(response => response.json())
-      .then(items => this.setState({items}))
-      .catch(err => console.log(err))
+  getItems() {
+    api.get("/ativo")
+    .then(res => {
+      const items = res.data;
+      this.setState({ items });
+    })
   }
 
   addItemToState = (item) => {
@@ -24,11 +26,11 @@ class AtivosTable extends Component {
   updateState = (item) => {
     const itemIndex = this.state.items.findIndex(data => data.id === item.id)
     const newArray = [
-    // destructure all items from beginning to the indexed item
+      // destructure all items from beginning to the indexed item
       ...this.state.items.slice(0, itemIndex),
-    // add the updated item to the array
+      // add the updated item to the array
       item,
-    // add the rest of the items to the array from the index after the replaced item
+      // add the rest of the items to the array from the index after the replaced item
       ...this.state.items.slice(itemIndex + 1)
     ]
     this.setState({ items: newArray })
@@ -39,17 +41,17 @@ class AtivosTable extends Component {
     this.setState({ items: updatedItems })
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.getItems()
   }
 
   render() {
     return (
 
-        <Container className="App">
+      <Container className="App">
         <Row>
           <Col>
-            <h1 style={{margin: "20px 0"}}>Gestão de Ativos - Mineradora Inc.</h1>
+            <h1 style={{ margin: "20px 0" }}>Gestão de Ativos - Mineradora Inc.</h1>
           </Col>
         </Row>
         <Row>
@@ -62,7 +64,7 @@ class AtivosTable extends Component {
             <CSVLink
               filename={"db.csv"}
               color="primary"
-              style={{float: "left", marginRight: "10px"}}
+              style={{ float: "left", marginRight: "10px" }}
               className="btn btn-primary"
               data={this.state.items}>
               Download CSV
@@ -70,11 +72,11 @@ class AtivosTable extends Component {
           </Col>
         </Row>
 
-        
-      </Container>
-  );
 
-    
+      </Container>
+    );
+
+
   }
 }
 

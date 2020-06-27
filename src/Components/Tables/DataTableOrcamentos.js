@@ -1,66 +1,39 @@
 import React, { Component } from 'react'
 import { Table, Button } from 'reactstrap'
+import api from '../../services/api'
 
 
 class DataTableAtivos extends Component {
 
-  deleteItem = id => {
-    let confirmDelete = window.confirm('Delete item forever?')
-    if(confirmDelete){
-      fetch('http://localhost:3000/crud', {
-      method: 'delete',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-        id
-      })
-    })
-      .then(response => response.json())
-      .then(item => {
-        this.props.deleteItemFromState(id)
-      })
-      .catch(err => console.log(err))
-    }
 
-  }
 
 
   aprovarOrcamento = id => {
     let confirmDelete = window.confirm('Aprovar Orçamento?')
     if(confirmDelete){
-      fetch(`http://localhost:8080/api/v1/orcamento/avaliar/${encodeURIComponent(id)}`, {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: `"aprovado"`
-    })
-      .then(response => response.json())  
-      .then(item => {
+
+      api.post(`/orcamento/avaliar/${encodeURIComponent(id)}`,`"aprovado"`
+      
+      )
+      .then(res => {
+        const item = res.data;
         this.props.updateState(item)
       })
-      .catch(err => console.log(err))
     }
-
   }
 
 
   reprovarOrcamento = id => {
     let confirmDelete = window.confirm('Reprovar Orçamento?')
     if(confirmDelete){
-      fetch(`http://localhost:8080/api/v1/orcamento/avaliar/${encodeURIComponent(id)}`, {
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: `"reprovado"`
-    })
-      .then(response => response.json())  
-      .then(item => {
+
+      api.post(`/orcamento/avaliar/${encodeURIComponent(id)}`,`"reprovado"`
+      
+      )
+      .then(res => {
+        const item = res.data;
         this.props.updateState(item)
       })
-      .catch(err => console.log(err))
     }
 
   }

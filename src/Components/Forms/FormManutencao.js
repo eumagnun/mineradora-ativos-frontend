@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
+import api from '../../services/api';
 
 class FormManutencao extends React.Component {
   state = {
@@ -16,7 +17,7 @@ class FormManutencao extends React.Component {
 
   submitFormAdd = e => {
     e.preventDefault()
-    fetch(`http://localhost:8080/api/v1/ativo/${this.state.idAtivo}/manutencao`, {
+    fetch(api.get(`/ativo/${this.state.idAtivo}/manutencao`), {
       method: 'put',
       headers: {
         'Content-Type': 'application/json'
