@@ -1,19 +1,21 @@
 import React, { Component } from 'react'
-import { Container, Row, Col, Modal } from 'reactstrap'
+import { Container, Row, Col } from 'reactstrap'
 import { CSVLink } from "react-csv"
-import ModalForm from './Modals/Modal'
 import DataTable from './Tables/DataTableOrcamentos'
+import api from '../services/api'
 
 class OrcamentosTable extends Component {
   state = {
     items: []
   }
 
+  
   getItems(){
-    fetch('http://localhost:8080/api/v1/orcamento')
-      .then(response => response.json())
-      .then(items => this.setState({items}))
-      .catch(err => console.log(err))
+    api.get("/orcamento")
+    .then(res => {
+      const items = res.data;
+      this.setState({ items });
+    })
   }
 
   addItemToState = (item) => {
