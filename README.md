@@ -2,18 +2,33 @@
 
 ## Instructions
 
-**1. Clone o repositório**
+**Update packages**
+```
+sudo apt update
+```
+
+**Install Node**
+```
+sudo apt install nodejs
+```
+
+**Install NPM**
+```
+sudo apt install npm
+```
+
+**Clone o repositório**
 
 ```
 git clone https://bitbucket.org/eumagnun/mineradora-ativos-frontend
 ```
 
-**2. Instale as dependências**
+**Instale as dependências**
 
 ```
 npm install
 ```
-**3. Inicie a aplicação**
+**Inicie a aplicação**
 ```
 npm start
 ```
